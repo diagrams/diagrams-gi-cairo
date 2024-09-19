@@ -3,6 +3,9 @@
 - Initial release of `diagrams-gi-cairo`.
 - Builds with GHC 8.10, 9.0, 9.2, and 9.4
 
+- Hackage revisions
+    - r1 (19 Sep 2024): Allow `base-4.20` and test up to GHC 9.10
+
 # Changelog for predecessor package, diagrams-cairo
 
 ## [v1.4.1.1](https://github.com/diagrams/diagrams-cairo/tree/v1.4.1.1) (2019-01-11)
