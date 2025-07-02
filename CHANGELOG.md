@@ -1,3 +1,8 @@
+## [v1.5](https://github.com/diagrams/diagrams-gi-cairo/tree/v1.4.2) (2025-06-02)
+
+- Allow `base-4.21` and test with GHC 9.12
+- Remove no longer supported `DiagramLoopOpts`
+
 ## [v1.4.2](https://github.com/diagrams/diagrams-gi-cairo/tree/v1.4.2) (2022-12-06)
 
 - Initial release of `diagrams-gi-cairo`.
