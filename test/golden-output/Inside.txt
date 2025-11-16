@@ -1,0 +1,8 @@
+Expected: Curved triangular shape filled with red dots using winding rule point-in-path test.
+
+Visual criteria:
+- Black outline showing a curved path (cubic Bezier segments forming closed shape)
+- Interior filled with small red dots on a grid
+- Dots only appear inside the path boundary (winding rule)
+- Shape should have smooth curved edges
+- Grid spacing of 0.1 units

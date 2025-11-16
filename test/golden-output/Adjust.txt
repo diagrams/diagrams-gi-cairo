@@ -1,0 +1,8 @@
+Expected: Two cubic Bezier curve segments demonstrating segment adjustment.
+
+Visual criteria:
+- Black square outline (1x1)
+- Black cubic Bezier curve (original segment)
+- Red cubic Bezier curve (adjusted segment using ToAbsolute 0.8329... on Both sides)
+- All overlaid on invisible 2x2 bounding square
+- Tests the segment adjustment API for precise curve trimming

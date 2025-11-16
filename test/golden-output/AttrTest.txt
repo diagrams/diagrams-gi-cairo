@@ -1,0 +1,11 @@
+Expected: Large square (20x20 units) with default attributes applied.
+
+Visual criteria:
+- Black square outline (default line color)
+- Line width = 1 (default line width)
+- No fill color (just outline)
+- Square centered with padding
+
+Purpose: Tests that the Cairo backend correctly applies default attributes (lw 1, lc black)
+when no explicit attributes are specified. This verifies the fix for issue #14 from the
+original diagrams-cairo repository.

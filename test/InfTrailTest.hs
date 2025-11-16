@@ -1,9 +1,19 @@
+{-# LANGUAGE FlexibleContexts #-}
+
+module InfTrailTest (diagram, main) where
+
 import Diagrams.Prelude
 
 import Diagrams.Backend.Cairo.CmdLine
 
-t = polygon with { sides = 3 } # scale 10 # fc white # lc black # lw 0.2
+t :: Diagram B
+t = regPoly 3 1 # scale 10 # fc white # lc black # lw 0.2
 
-ts = cat' (10,2) with { catMethod = Distrib } (replicate 6 t)
+ts :: Diagram B
+ts = cat' (r2 (10,2)) (with & catMethod .~ Distrib & sep .~ 1) (replicate 6 t)
 
-main = defaultMain ts
+diagram :: Diagram B
+diagram = ts
+
+main :: IO ()
+main = defaultMain diagram

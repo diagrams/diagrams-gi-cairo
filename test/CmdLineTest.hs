@@ -1,9 +1,18 @@
-import Diagrams.Prelude
+{-# LANGUAGE NoMonomorphismRestriction #-}
 
-import Diagrams.Backend.Cairo
+module CmdLineTest (diagram, main) where
+
+import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
 
-d = polygon with {sides=5}
-d2 = polygon with {sides=17}
+d :: Diagram B
+d = regPoly 5 1
 
-main = multiMain [("pent", d), ("foo", d2)]
+d2 :: Diagram B
+d2 = regPoly 17 1
+
+diagram :: Diagram B
+diagram = d ||| strutX 0.5 ||| d2
+
+main :: IO ()
+main = defaultMain diagram

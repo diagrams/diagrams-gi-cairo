@@ -1,0 +1,6 @@
+Expected: Two circles positioned close together (negative strut test).
+
+Visual criteria:
+- Two circles of equal size
+- Circles should be touching or overlapping slightly
+- The negative strut (-1) should bring the circles closer than normal spacing

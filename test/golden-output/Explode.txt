@@ -1,0 +1,9 @@
+Expected: Series of colored line segments (exploded trail).
+
+Visual criteria:
+- Trail made of 8 segments (down, down, right, down, right, right, right, down)
+- Each segment exploded into separate paths
+- Red segments: 4 red horizontal lines
+- Blue segments: 4 blue vertical lines
+
+Purpose: Tests that explodeTrail correctly breaks a trail into individual path segments and that each segment can be styled independently.

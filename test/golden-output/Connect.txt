@@ -1,0 +1,7 @@
+Expected: Eight dots arranged in octagon with connecting lines.
+
+Visual criteria:
+- 8 black dots positioned in regular octagon pattern (radius 1)
+- Lines connecting: 0→2, 2→5, 5→6, 6→3, 3→7
+- Tests named diagram elements and connection drawing
+- Creates specific graph pattern among octagon vertices

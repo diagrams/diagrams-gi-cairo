@@ -1,3 +1,8 @@
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleContexts #-}
+
+module Inside (diagram, main) where
+
 import Diagrams.Prelude
 import Diagrams.TwoD.Path
 import Diagrams.Backend.Cairo.CmdLine
@@ -12,24 +17,38 @@ import qualified Data.Set as S
 -- path = close . fromOffsets $ [(0,10), (3,0), (0, -8), (2,0), (0,2), (-4,0), (0, 3)
 --                              ,(9, 0), (0, -7)]
 
-t = (polygonPath with {sides = 3, orientation = OrientToX})
-[v1,v2] = trailOffsets t
+t :: Trail V2 Double
+t = polygon (def & polyType .~ PolyRegular 3 1 & polyOrient .~ OrientTo unitX)
 
-seg = Cubic v1 v1 (v1 ^+^ v2)
+v1, v2 :: V2 Double
+(v1:v2:_) = trailOffsets t
 
-path = centerXY . scale 5 . close $ fromSegments [seg]
+seg :: Segment Closed V2 Double
+seg = Cubic v1 v1 (OffsetClosed (v1 ^+^ v2))
 
-dot c = circle # fc c
-               # lw 0
-               # scale 0.03
+pathTrail :: Trail V2 Double
+pathTrail = closeTrail $ fromSegments [seg]
 
-points = mconcat [ if (isInsideWinding p path) then dot red # moveTo p else mempty
+path :: Path V2 Double
+path = centerXY . scale 5 $ pathFromTrail pathTrail
+
+makeDot :: Colour Double -> Diagram B
+makeDot c = circle 1 # fc c
+                     # lw 0
+                     # scale 0.03
+
+points :: Diagram B
+points = mconcat [ if (isInsideWinding path p) then makeDot red # moveTo p else mempty
                  | x <- range
                  , y <- range
-                 , let p = P (x,y)
+                 , let p = p2 (x,y)
                  ]
   where range = [-5, -4.9 .. 5]
 
+diagram :: Diagram B
+diagram = points <> stroke path # lw 0.05
+
+main :: IO ()
 main = do
   print path
-  defaultMain (points <> stroke path # lw 0.05)
+  defaultMain diagram

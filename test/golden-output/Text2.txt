@@ -1,0 +1,7 @@
+Expected: Horizontal row of lowercase letters a-z in boxes.
+
+Visual criteria:
+- 26 characters (a through z)
+- Each letter in its own square box (1.5x1.5 units)
+- Letters positioned horizontally in sequence
+- Small square outlines around each letter

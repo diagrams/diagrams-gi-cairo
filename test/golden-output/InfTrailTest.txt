@@ -1,0 +1,8 @@
+Expected: Six white triangles with black outlines distributed along a diagonal path.
+
+Visual criteria:
+- 6 triangles arranged diagonally
+- Each triangle scaled by 10
+- White fill with black outline (line width 0.2)
+- Distributed along vector (10,2) with separation 1 between origins
+- Tests cat' with catMethod = Distrib

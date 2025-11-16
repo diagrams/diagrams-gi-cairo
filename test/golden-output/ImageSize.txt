@@ -1,0 +1,7 @@
+Expected: Single Daisy Duck image scaled to 450x450.
+
+Visual criteria:
+- PNG image of Daisy Duck (test/daisy-duck.png)
+- Displayed at 450x450 size
+- Padded by factor 1.1
+- Should show cartoon duck character clearly in purple/magenta outfit

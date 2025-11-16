@@ -1,0 +1,11 @@
+Expected: 2x3 grid of squares showing shear transformations.
+
+Visual criteria:
+Row 1: Three squares with horizontal shear (shearX 0, 0.3, 0.6)
+  - First square: normal square
+  - Second square: sheared horizontally by 0.3 (parallelogram leaning right)
+  - Third square: sheared horizontally by 0.6 (more pronounced lean right)
+
+Row 2: Three squares with combined vertical and horizontal shear
+  - All three sheared vertically (shearY 0.5)
+  - Plus increasing horizontal shear (0, 0.3, 0.6)

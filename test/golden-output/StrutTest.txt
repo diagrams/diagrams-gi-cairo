@@ -1,0 +1,7 @@
+Expected: Two circles with strut spacing between them.
+
+Visual criteria:
+- Two unit circles
+- Positioned horizontally with 1-unit strut between them
+- Tests that strut (invisible spacer) works correctly with beside operation
+- Circles should be separated by exactly 1 unit of space

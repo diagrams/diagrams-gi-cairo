@@ -1,0 +1,13 @@
+Expected: 3x6 grid of shapes with radial envelope sampling visualization using white dots on black background.
+
+Visual criteria:
+- Black background for contrast
+- 18 test cases arranged in 3 rows of 6
+- Each cell shows a red shape with its computed envelope visualized using white dots
+- Row 1: square, circle, path, bezier, ellipse, square (larger)
+- Row 2: circle (larger), path (scaled), bezier (scaled), ellipse (scaled), rotated square, scaled bezier
+- Row 3: translated square, rotated ellipse, 1-segment cubic, 2-segment cubic, 3-segment cubic, line
+- White dots appear around shapes at 100 sampled envelope boundary points
+- Dots should form a "halo" around non-trivial shapes (rotated squares, ellipses, curved paths)
+- Tests envelope calculation (bounds in all directions) for various shape types
+- Validates that transformations (scale, rotate, translate) correctly update envelopes

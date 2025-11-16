@@ -1,22 +1,29 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+module Text (diagram, main) where
+
 import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
 
+t :: Diagram B
 t = text "Yay, text!"
     # font "dejavu lgc serif"
     # italic
     # bold
 
+d :: Diagram B
 d =  t
---  <> t # alignText alignL # fc yellow
---  <> t # alignText alignT # fc green
---  <> t # alignText alignB # fc blue
---  <> t # alignText alignR # fc red
---  <> t # alignText (alignTL . alignTL) # fc orange
   <> rect 15 3 # lw 0 # showOrigin
 
-d2 = decorateTrail (fromVertices (iterate (translateY (-0.8)) origin))
-   $ zipWith fontSize [1,0.9..0.3] (repeat t)
+-- Create text at different sizes, manually positioned
+d2 :: Diagram B
+d2 = vcat
+  [ text "Yay, text!" # font "dejavu lgc serif" # italic # bold # fontSize sz
+  | sz <- [1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
+  ]
 
-main = defaultMain (d === d2)
+diagram :: Diagram B
+diagram = d === d2
+
+main :: IO ()
+main = defaultMain diagram
