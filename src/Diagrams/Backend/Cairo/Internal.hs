@@ -69,6 +69,7 @@ import qualified Control.Monad.StateStack        as SS
 import           Control.Monad.Trans             (lift)
 import qualified Data.Array.MArray               as MA
 import           Data.Bits                       (rotateL, (.&.))
+import           Data.Char                       (toLower)
 import qualified Data.Foldable                   as F
 import           Data.Hashable                   (Hashable (..))
 import           Data.List                       (isSuffixOf)
@@ -384,11 +385,11 @@ setTexture (Just (RG g)) = liftC $
     (x1', y1') = unp2 (g^.rGradCenter1)
     (x0, y0, x1, y1) = (x0' * (r1 - r0) / r1, y0' * (r1 - r0) / r1, x1' ,y1')
 
--- Can only do PNG files at the moment...
+-- Supported formats: PNG via Cairo, JPEG/GIF/BMP/etc. via JuicyPixels)
 instance Renderable (DImage Double External) Cairo where
   render _ (DImage path w h tr) = C . liftC $ do
     let ImageRef file = path
-    if ".png" `isSuffixOf` file
+    if ".png" `isSuffixOf` map toLower file
       then do
         C.save
         cairoTransf (tr <> reflectionY)
@@ -404,14 +405,43 @@ instance Renderable (DImage Double External) Cairo where
                                        (-fromIntegral h' / 2)
           Left _ ->
             liftIO . putStrLn $
-              "Warning: can't read image file <" ++ file ++ ">"
+              "Warning: can't read PNG file <" ++ file ++ ">"
         C.paint
         C.restore
-      else
-        liftIO . putStr . unlines $
-          [ "Warning: Cairo backend can currently only render embedded"
-          , "  images in .png format.  Ignoring <" ++ file ++ ">."
-          ]
+      else do
+        -- Use JuicyPixels for unsupported formats (JPEG, GIF, BMP, etc.)
+        imgChk <- liftIO (readImage file)
+        case imgChk of
+          Right dImg -> do
+            C.save
+            cairoTransf (tr <> reflectionY)
+
+            let img@(Image w' h' _) = toImageRGBA8 dImg
+                fmt = C.FormatARGB32
+            dataSurf <- liftIO $ C.createImageSurface fmt w' h'
+
+            surData :: C.SurfaceData Int Word32
+                    <- liftIO $ C.imageSurfaceGetPixels dataSurf
+
+            stride <- C.imageSurfaceGetStride dataSurf
+
+            _ <- forMOf imageIPixels img $ \(x, y, px) -> do
+               let p = y * (stride`div`4) + x
+               liftIO . MA.writeArray surData p $ toARGB px
+               return px
+
+            C.surfaceMarkDirty dataSurf
+
+            let sz = fromIntegral <$> dims2D w h
+            cairoTransf $ requiredScaling sz (fromIntegral <$> V2 w' h')
+            C.setSourceSurface dataSurf (-fromIntegral w' / 2)
+                                        (-fromIntegral h' / 2)
+
+            C.paint
+            C.restore
+          Left err ->
+            liftIO . putStrLn $
+              "Warning: can't read image file <" ++ file ++ ">: " ++ err
 
 -- Copied from Rasterific backend. This function should probably be in JuicyPixels!
 toImageRGBA8 :: DynamicImage -> Image PixelRGBA8

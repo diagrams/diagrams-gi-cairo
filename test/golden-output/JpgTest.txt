@@ -1,9 +1,6 @@
-Expected: JPEG image (not supported by Cairo backend).
+Expected: JPEG image of a vintage rotary telephone.
 
 Visual criteria:
-- Should attempt to load test/phone.jpg (470x377)
-- KNOWN LIMITATION: Cairo backend only supports PNG format
-- Expected result: blank/empty image
-- Test should pass but image will not render
+- Black rotary telephone with dial (test/phone.jpg, 470x377 pixels)
 
-Note: This test documents that JPEG is not supported. A blank image is expected behavior.
+Purpose: Tests that the Cairo backend can correctly load and render JPEG images using JuicyPixels.
