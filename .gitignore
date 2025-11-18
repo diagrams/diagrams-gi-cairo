@@ -14,3 +14,4 @@ TAGS
 .cabal-sandbox
 cabal.sandbox.config
 .stack-work
+test/test-output/
