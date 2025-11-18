@@ -1,0 +1,6 @@
+Expected: Test of hcat spacing with mempty elements - shows 6 squares with different colors.
+
+Visual criteria:
+- From left to right: white square, blue square (with 1-unit gap), white square, green square (with 1-unit gap), white square, red square
+- Demonstrates that mempty elements and struts affect spacing correctly
+- All squares should be evenly sized

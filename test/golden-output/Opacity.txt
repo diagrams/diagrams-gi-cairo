@@ -1,0 +1,7 @@
+Expected: Blue circle with green outline overlaid with a red square, with multiple opacity layers applied (0.8 * 0.8 * 0.8 * 0.6).
+
+Visual criteria:
+- Blue circle with green outline visible
+- Red/purple square overlapping the circle in the center
+- Colors should appear translucent/blended
+- Overall composition should have reduced opacity

@@ -1,0 +1,7 @@
+Expected: Ellipse beside a square (beside operation test).
+
+Visual criteria:
+- Left: ellipse (circle scaled by 2 in Y direction and rotated 45 degrees)
+- Right: unit square
+- Positioned beside each other along diagonal direction (1,1)
+- Tests the 'beside' function for proper positioning

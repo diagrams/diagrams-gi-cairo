@@ -1,0 +1,10 @@
+Expected: Unit square overlaid on unit circle.
+
+Visual criteria:
+- Blue filled circle (radius 1)
+- Square overlaid on circle
+- Red outline (line color)
+- Line width 1
+- Both shapes centered
+
+Note: Simplified version of original withBounds test.

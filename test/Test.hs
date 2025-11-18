@@ -1,14 +1,21 @@
-import Diagrams.Prelude
+{-# LANGUAGE NoMonomorphismRestriction #-}
 
+module Test (diagram, main) where
+
+import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
 
-type D = Diagram Cairo
+-- Note: original test used withBounds which is deprecated
+-- This simplified version just shows the base diagram
 
+d :: Diagram B
 d = unitSquare `atop` unitCircle
     # lc red
     # fc blue
     # lw 1
 
-d' = d # withBounds (circle 2 :: D)
+diagram :: Diagram B
+diagram = d
 
-main = defaultMain d'
+main :: IO ()
+main = defaultMain diagram

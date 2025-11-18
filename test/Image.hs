@@ -1,10 +1,19 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+module Image (diagram, main) where
+
 import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
+import Diagrams.TwoD.Image
 
-daisyD = image "daisy-duck.png" 400 400
+daisyD :: Diagram B
+daisyD = image (uncheckedImageRef "test/daisy-duck.png" 400 400)
 
-daisy = mconcat . take 20 . iterate (rotateBy (1/15)) . alignB $ daisyD
+daisy :: Diagram B
+daisy = mconcat . take 10 . iterate (rotateBy (1/10)) . alignB $ daisyD
 
-main = defaultMain (pad 1.1 daisy)
+diagram :: Diagram B
+diagram = pad 1.1 daisy
+
+main :: IO ()
+main = defaultMain diagram

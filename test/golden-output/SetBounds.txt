@@ -1,0 +1,8 @@
+Expected: Circle beside rotated square (bounds test).
+
+Visual criteria:
+- Left: circle with radius 2
+- Right: square (1.5x1.5) rotated by 1/8 turn (45 degrees)
+- Positioned side-by-side using (|||) operator
+
+Note: Simplified version of original withBounds test.

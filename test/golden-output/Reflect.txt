@@ -1,0 +1,7 @@
+Expected: Two squares, one reflected across a diagonal line.
+
+Visual criteria:
+- Original unit square
+- Second square reflected about line through point (0.5, 0.5) with direction (-2, -1)
+- Both squares overlapping
+- Should show reflection symmetry

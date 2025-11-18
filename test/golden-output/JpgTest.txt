@@ -1,0 +1,6 @@
+Expected: JPEG image of a vintage rotary telephone.
+
+Visual criteria:
+- Black rotary telephone with dial (test/phone.jpg, 470x377 pixels)
+
+Purpose: Tests that the Cairo backend can correctly load and render JPEG images using JuicyPixels.

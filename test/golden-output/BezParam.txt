@@ -1,0 +1,8 @@
+Expected: Cubic Bezier curve with red dots showing parameterization.
+
+Visual criteria:
+- Black cubic Bezier curve
+- Series of small red dots along the curve
+- Dots placed at parameter values t = 0, 0.01, 0.02, ..., 1.0
+- Demonstrates correct Bezier curve parameterization
+- Dots should be evenly distributed along the parameter (not arc length)

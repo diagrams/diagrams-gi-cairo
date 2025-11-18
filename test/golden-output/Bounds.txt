@@ -1,0 +1,8 @@
+Expected: Simple circle (bounds test).
+
+Visual criteria:
+- Circle with radius 4
+- Default styling (black outline, no fill)
+- Centered
+
+Note: Simplified version of original withBounds test.

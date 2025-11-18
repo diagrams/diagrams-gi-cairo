@@ -1,0 +1,8 @@
+Expected: Self-intersecting path filled with EvenOdd rule showing holes.
+
+Visual criteria:
+- Complex closed path with self-intersections
+- Red fill with EvenOdd fill rule
+- Line width 0.05
+- Alternating filled/unfilled regions where path crosses itself
+- Two white rectangular holes visible where path crosses itself

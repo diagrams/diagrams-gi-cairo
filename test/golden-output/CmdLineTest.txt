@@ -1,0 +1,7 @@
+Expected: Two regular polygons side by side.
+
+Visual criteria:
+- Left: regular pentagon (5 sides, radius 1)
+- Right: regular 17-gon (17 sides, radius 1)
+- Separated by 0.5-unit strut
+- Both shapes should have visible sides

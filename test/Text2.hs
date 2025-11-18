@@ -1,10 +1,15 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+module Text2 (diagram, main) where
+
 import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
 
-import Data.List.Split
-
+letterBlock :: Char -> Diagram B
 letterBlock c = square 1.5 <> text [c]
 
-main = defaultMain (hcat $ map letterBlock ['a'..'z'])
+diagram :: Diagram B
+diagram = hcat $ map letterBlock ['a'..'z']
+
+main :: IO ()
+main = defaultMain diagram

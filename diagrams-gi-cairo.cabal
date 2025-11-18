@@ -84,3 +84,28 @@ Library
   if !os(windows)
     cpp-options: -DCMDLINELOOP
     Build-depends:     unix
+
+Test-Suite tests
+  Type:                exitcode-stdio-1.0
+  Main-is:             Suite.hs
+  Other-modules:       Opacity, Shear, NegStrut, AttrTest,
+                       Clip, RoundedRect, InfTrailTest, Issue32,
+                       Inside, Inside2, Visible, PathBoundsBug,
+                       BezParam, Adjust, Text2, Beside, Reflect,
+                       FillRule, StrutTest, PathTest, ShowNames, Explode,
+                       CmdLineTest, CatTest, Connect,
+                       Text, Test, Bounds, SetBounds, BoundsTest,
+                       Image, ImageSize, JpgTest
+  Hs-source-dirs:      test
+  Build-depends:       base,
+                       diagrams-gi-cairo,
+                       diagrams-lib,
+                       diagrams-core,
+                       tasty,
+                       tasty-golden,
+                       filepath,
+                       directory,
+                       colour,
+                       containers
+  Default-language:    Haskell2010
+  ghc-options:         -Wall -threaded

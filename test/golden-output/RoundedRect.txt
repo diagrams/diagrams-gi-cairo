@@ -1,0 +1,7 @@
+Expected: Rounded rectangle with triangle overlay.
+
+Visual criteria:
+- Green rounded rectangle (5x2 units, corner radius 0.3) with 50% opacity
+- Blue outline on the rounded rectangle
+- Green triangle (3-sided regular polygon) overlapping in center
+- Line width of 0.05

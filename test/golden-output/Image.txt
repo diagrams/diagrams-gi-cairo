@@ -1,0 +1,8 @@
+Expected: Daisy Duck character rotated 10 times in circular pattern.
+
+Visual criteria:
+- PNG image of Daisy Duck (test/daisy-duck.png)
+- 10 copies rotated incrementally by 1/10 (36 degrees each)
+- Each aligned to bottom edge before rotation
+- Creates circular mandala pattern
+- Should show cartoon duck character in purple/magenta outfit

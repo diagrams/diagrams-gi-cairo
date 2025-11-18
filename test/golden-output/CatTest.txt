@@ -1,0 +1,13 @@
+Expected: Three rows of colored circles demonstrating cat alignment options.
+
+Visual criteria:
+Row 1 (foo1): 9 circles with gradient colors (aqua to darkcyan), increasing sizes (scale 1-10), positioned along diagonal (1,-0.5)
+
+Row 2 (foo2): Same circles aligned to top edge, concatenated horizontally
+
+Row 3 (foo3): Same circles aligned to bottom edge, concatenated horizontally
+
+- Each row should show red origin dot (showOrigin)
+- All rows centered horizontally
+- Vertical spacing between rows
+- Colors cycle through: aqua, aquamarine, blue, blueviolet, cadetblue, cyan, cornflowerblue, darkblue, darkcyan

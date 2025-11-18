@@ -1,0 +1,7 @@
+Expected: Row of 10 circles with "foo" labels displayed.
+
+Visual criteria:
+- 10 circles arranged horizontally
+- Each circle labeled with "foo" text inside
+- Tests showLabels function which displays named diagram elements
+- All circles have the same name "foo"

@@ -1,0 +1,7 @@
+Expected: Regular octagon filled with red dots using point sampling.
+
+Visual criteria:
+- Black octagon outline (regular 8-sided polygon, line width 0.02)
+- Interior filled with small red dots on a fine grid
+- Dots only appear inside the octagon boundary
+- Grid spacing of 0.04 units creates dense dot pattern

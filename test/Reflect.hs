@@ -1,8 +1,15 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+module Reflect (diagram, main) where
+
 import Diagrams.Prelude
 import Diagrams.Backend.Cairo.CmdLine
 
-d = unitSquare <> reflectAbout (P (1/2,1/2)) (-2,-1) unitSquare
+d :: Diagram B
+d = unitSquare <> reflectAbout (p2 (1/2,1/2)) (direction (r2 (-2,-1))) unitSquare
 
-main = defaultMain (pad 1.1 d)
+diagram :: Diagram B
+diagram = pad 1.1 d
+
+main :: IO ()
+main = defaultMain diagram

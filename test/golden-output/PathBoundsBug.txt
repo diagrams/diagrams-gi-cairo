@@ -1,0 +1,7 @@
+Expected: Three-fold symmetric curved shape beside a square (bounds calculation test).
+
+Visual criteria:
+- Left: curved triangular shape with 3-fold rotational symmetry (made from cubic Bezier curves)
+- Right: unit square
+- Both shapes positioned side-by-side
+- Tests that path bounds are calculated correctly for complex cubic curves

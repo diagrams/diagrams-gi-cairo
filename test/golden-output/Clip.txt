@@ -1,0 +1,6 @@
+Expected: Red square clipped by a diamond-shaped path (45° rotated square).
+
+Visual criteria:
+- Red filled shape visible
+- Shape should be a diamond/square rotated 45 degrees
+- The clipping demonstrates that a red square has been clipped by a smaller diamond path
