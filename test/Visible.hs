@@ -18,7 +18,7 @@ applyColor (m,n) | gcd m n == 1 = unitSquare # fc yellow
                  | otherwise    = unitSquare # fc black
 
 diagram :: Diagram B
-diagram = pad 1.1 $ grid 200
+diagram = pad 1.1 $ grid 50
 
 main :: IO ()
 main = defaultMain diagram

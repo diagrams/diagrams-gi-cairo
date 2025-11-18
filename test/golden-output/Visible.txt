@@ -1,7 +1,7 @@
-Expected: 201x201 grid showing coprime number pattern (Euler's totient visualization).
+Expected: 51x51 grid showing coprime number pattern (Euler's totient visualization).
 
 Visual criteria:
-- Large grid of small squares
+- Grid of small squares (51×51)
 - Yellow squares where gcd(row, col) == 1 (coprime positions)
 - Black squares elsewhere
 - Top-left corner (0,0) should be black

@@ -10,7 +10,7 @@ daisyD :: Diagram B
 daisyD = image (uncheckedImageRef "test/daisy-duck.png" 400 400)
 
 daisy :: Diagram B
-daisy = mconcat . take 20 . iterate (rotateBy (1/15)) . alignB $ daisyD
+daisy = mconcat . take 10 . iterate (rotateBy (1/10)) . alignB $ daisyD
 
 diagram :: Diagram B
 diagram = pad 1.1 daisy

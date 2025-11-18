@@ -2,7 +2,7 @@ Expected: Concentric spiraling "sun burst" pattern with nested yellow shapes.
 
 Visual criteria:
 - Yellow spiky shapes (25 spikes each) with red outlines
-- 15 layers scaled progressively smaller toward center
+- 10 layers scaled progressively smaller toward center
 - Round line joins (LineJoinRound)
 - Line width 1
 - Creates mandala-like spiral pattern

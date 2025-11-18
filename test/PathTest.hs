@@ -21,7 +21,7 @@ sun = (strokeT $ burst 25)
       # centerXY
 
 dia :: Diagram B
-dia = mconcat . reverse . take 15 . iterate (scale 0.8) $ sun
+dia = mconcat . reverse . take 10 . iterate (scale 0.8) $ sun
 
 diagram :: Diagram B
 diagram = pad 1.1 dia
