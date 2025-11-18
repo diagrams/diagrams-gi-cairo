@@ -497,7 +497,8 @@ layoutStyledText sty (Text tt al str) =
       ff = styAttr getFont
       fs = styAttr fromFontSlant
       fw = styAttr fromFontWeight
-      size' = styAttr getFontSize
+      size' = styAttr getFontSize :: Maybe Double
+      pangoScale = 1024 :: Double  -- PANGO_SCALE: 1 Pango unit = 1/1024 point
   in do
     context <- C.getContext
     cairoTransf tr -- non-uniform scale
@@ -509,7 +510,8 @@ layoutStyledText sty (Text tt al str) =
       if' (P.fontDescriptionSetFamily font) $ fmap pack ff
       if' (P.fontDescriptionSetStyle font) fs
       if' (P.fontDescriptionSetWeight font) fw
-      if' (P.fontDescriptionSetSize font) size'
+      -- fontDescriptionSetSize expects Pango units (points * PANGO_SCALE)
+      if' (P.fontDescriptionSetSize font) (fmap (round . (* pangoScale)) size')
       P.layoutSetFontDescription layout $ Just font
     -- geometric translation
     ref <- liftIO $ case al of
@@ -517,10 +519,12 @@ layoutStyledText sty (Text tt al str) =
         (_,prect) <- P.layoutGetExtents layout
         (realToFrac -> w) <- P.getRectangleWidth prect
         (realToFrac -> h) <- P.getRectangleHeight prect
-        return $ r2 (w * xt, h * (1 - yt))
+        -- Convert from Pango units to diagram units by dividing by PANGO_SCALE
+        return $ r2 (w * xt / pangoScale, h * (1 - yt) / pangoScale)
       BaselineText -> do
         (realToFrac -> baseline) <- P.layoutIterGetBaseline =<< P.layoutGetIter layout
-        return $ r2 (0, baseline)
+        -- Convert from Pango units to diagram units by dividing by PANGO_SCALE
+        return $ r2 (0, baseline / pangoScale)
     let t = moveOriginBy ref mempty :: T2 Double
     cairoTransf t
     P.updateLayout context layout
