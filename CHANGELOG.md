@@ -1,3 +1,7 @@
+## Unreleased
+
+- `renderCairo` finishes PS, PDF and SVG surfaces before returning, so the file is complete when it returns instead of when the surface is garbage collected or the process exits.
+
 ## [v1.5](https://github.com/diagrams/diagrams-gi-cairo/tree/v1.4.2) (2025-06-02)
 
 - Allow `base-4.21` and test with GHC 9.12

@@ -165,15 +165,20 @@ instance Backend Cairo V2 Double where
       r = runRenderM .runC . toRender $ t
       renderIO = do
         let surfaceF s = C.renderWith s r
+            -- A file surface is written out when it is finished. gi-cairo-render's
+            -- with*Surface only drops its reference afterwards, which finishes the
+            -- surface at garbage collection or process exit, so a caller reading the
+            -- file right after rendering would find it empty; finish it explicitly.
+            finishingF s = surfaceF s >> C.surfaceFinish s
             V2 w h = specToSize 1 (opts^.cairoSizeSpec)
         case opts^.cairoOutputType of
           PNG ->
             C.withImageSurface C.FormatARGB32 (round w) (round h) $ \surface -> do
               surfaceF surface
               C.surfaceWriteToPNG surface (opts^.cairoFileName)
-          PS  -> C.withPSSurface  (opts^.cairoFileName) w h surfaceF
-          PDF -> C.withPDFSurface (opts^.cairoFileName) w h surfaceF
-          SVG -> C.withSVGSurface (opts^.cairoFileName) w h surfaceF
+          PS  -> C.withPSSurface  (opts^.cairoFileName) w h finishingF
+          PDF -> C.withPDFSurface (opts^.cairoFileName) w h finishingF
+          SVG -> C.withSVGSurface (opts^.cairoFileName) w h finishingF
           RenderOnly -> return ()
 
   adjustDia c opts d = if _cairoBypassAdjust opts
